@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+mistralai
+
+gliner
+torch
+presidio-analyzer
+python-multipart
