@@ -17,7 +17,7 @@ def get_model():
             #"en_core_web_sm"
             "fr_core_news_sm"
         )
-
+        _model.add_pipe("entity_ruler", before="ner")
         logger.info("spaCy loaded.")
 
     return _model
