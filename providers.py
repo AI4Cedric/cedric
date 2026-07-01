@@ -3,6 +3,10 @@ import os
 from openai import OpenAI
 from mistralai import Mistral
 
+print("Mistral version :", getattr(mistralai, "__version__", "unknown"))
+print("Mistral module :", mistralai.__file__)
+print("Mistral attributes :", dir(mistralai))
+
 openai_client = OpenAI(
 api_key=os.getenv("OPENAI_API_KEY")
 )
