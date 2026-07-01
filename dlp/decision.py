@@ -16,6 +16,7 @@ def apply_dlp_policy(
 
     score = scan_result["score"]
 
+
     if DLP_MODE == "STRICT":
 
         if action == "BLOCK":
@@ -27,6 +28,7 @@ def apply_dlp_policy(
                 "final_action": "BLOCK"
             }
 
+
         return {
             "allowed": True,
             "redacted_prompt": prompt,
@@ -34,7 +36,19 @@ def apply_dlp_policy(
             "final_action": action
         }
 
+
     if DLP_MODE == "SMART":
+
+
+        if action == "BLOCK":
+
+            return {
+                "allowed": False,
+                "redacted_prompt": None,
+                "mapping": {},
+                "final_action": "BLOCK"
+            }
+
 
         if score >= 40:
 
@@ -45,6 +59,7 @@ def apply_dlp_policy(
                 )
             )
 
+
             redacted_prompt = redact_sensitive_terms(
                 redacted_prompt,
                 scan_result.get(
@@ -53,22 +68,22 @@ def apply_dlp_policy(
                 )
             )
 
+
             return {
                 "allowed": True,
-                "redacted_prompt":
-                    redacted_prompt,
-                "mapping":
-                    mapping,
-                "final_action":
-                    "REDACT"
+                "redacted_prompt": redacted_prompt,
+                "mapping": mapping,
+                "final_action": "REDACT"
             }
+
 
         return {
             "allowed": True,
             "redacted_prompt": prompt,
             "mapping": {},
-            "final_action": action
+            "final_action": "ALLOW"
         }
+
 
     raise ValueError(
         f"Unknown DLP_MODE={DLP_MODE}"
