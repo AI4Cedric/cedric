@@ -15,7 +15,7 @@ def get_model():
 
         _model = spacy.load(
             #"en_core_web_sm"
-            "fr_core_news_sm", disable=["tok2vec", "tagger", "parser", "attribute_ruler", "lemmatizer"]
+            "fr_core_news_sm"
         )
         logger.info("spaCy loaded.")
 
