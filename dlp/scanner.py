@@ -1,9 +1,9 @@
 from gliner import GLiNER
+import logging
 
-#model = GLiNER.from_pretrained(
-     #"urchade/gliner_medium-v2.1"
-#    "urchade/gliner_small-v2.1"
-#)
+logger = logging.getLogger(__name__)
+
+_model = None
 
 LABELS = [
     "person",
@@ -18,14 +18,27 @@ LABELS = [
 ]
 
 
-#def detect_entities(text: str):
+def get_model():
+    global _model
 
-#     entities = model.predict_entities(
-#         text,
-#         LABELS
-#    )
+    if _model is None:
 
-#     return entities
+        logger.info("Loading GLiNER...")
+
+        _model = GLiNER.from_pretrained(
+            "urchade/gliner_medium-v2.1"
+        )
+
+        logger.info("GLiNER loaded.")
+
+    return _model
+
+
 def detect_entities(text: str):
 
-    return []
+    model = get_model()
+
+    return model.predict_entities(
+        text,
+        LABELS
+    )
