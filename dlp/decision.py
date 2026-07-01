@@ -50,7 +50,7 @@ def apply_dlp_policy(
             }
 
 
-        if score >= 40:
+        if score > 0:
 
             redacted_prompt, mapping = (
                 redact_text(
