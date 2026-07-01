@@ -15,7 +15,8 @@ def get_model():
 
         _model = spacy.load(
             #"en_core_web_sm"
-            "fr_core_news_sm"
+            #"fr_core_news_sm"
+            "fr_core_news_md"
         )
         logger.info("spaCy loaded.")
 
