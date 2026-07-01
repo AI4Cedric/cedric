@@ -15,9 +15,8 @@ def get_model():
 
         _model = spacy.load(
             #"en_core_web_sm"
-            "fr_core_news_sm"
+            "fr_core_news_sm", disable=["tok2vec", "tagger", "parser", "attribute_ruler", "lemmatizer"]
         )
-        _model.add_pipe("entity_ruler", before="ner")
         logger.info("spaCy loaded.")
 
     return _model
