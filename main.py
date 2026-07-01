@@ -39,6 +39,11 @@ allow_methods=["GET", "POST"],
 allow_headers=["*"]
 )
 
+@app.on_event("startup")
+async def startup():
+    from dlp.scanner import get_model
+    get_model()
+
 @app.get("/health")
 async def health():
 
