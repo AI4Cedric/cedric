@@ -21,15 +21,17 @@ LABELS = [
 def get_model():
     global _model
 
-    if _model is None:
+    if _model is not None:
+        logger.info("GLiNER already loaded.")
+        return _model
 
-        logger.info("Loading GLiNER...")
+    logger.info("Loading GLiNER...")
 
-        _model = GLiNER.from_pretrained(
-            "urchade/gliner_small-v2.1"
-        )
+    _model = GLiNER.from_pretrained(
+        "urchade/gliner_small-v2.1"
+    )
 
-        logger.info("GLiNER loaded.")
+    logger.info("GLiNER loaded.")
 
     return _model
 
