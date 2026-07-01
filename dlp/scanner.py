@@ -24,6 +24,7 @@ def get_model():
 
 
 LABEL_MAPPING = {
+    "PER": "person",
     "PERSON": "person",
     "ORG": "organization",
     "GPE": "address",
