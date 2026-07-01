@@ -41,6 +41,11 @@ def detect_entities(text: str):
 
     for ent in doc.ents:
 
+        logger.info(
+            "%s %s",
+            ent.text, ent.label_
+        )
+        
         if ent.label_ not in LABEL_MAPPING:
             continue
 
