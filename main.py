@@ -3,6 +3,7 @@ from dlp import scan_prompt
 from dlp.decision import (
     apply_dlp_policy
 )
+from dlp.restorer import restore_text
 
 import logging
 logging.basicConfig(
@@ -119,6 +120,16 @@ async def chat(
 
     logger.info(
         "LLM response: %s",
+        response[:500]
+    )
+
+    response = restore_text(
+        response,
+        policy["mapping"]
+    )
+
+    logger.info(
+        "Restored response: %s",
         response[:500]
     )
 
