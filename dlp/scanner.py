@@ -1,8 +1,9 @@
 from gliner import GLiNER
 
-# model = GLiNER.from_pretrained(
-#     "urchade/gliner_medium-v2.1"
-# )
+model = GLiNER.from_pretrained(
+     #"urchade/gliner_medium-v2.1"
+    urchade/gliner_small-v2.1
+)
 
 LABELS = [
     "person",
@@ -17,14 +18,14 @@ LABELS = [
 ]
 
 
-# def detect_entities(text: str):
-
-#     entities = model.predict_entities(
-#         text,
-#         LABELS
-#     )
-
-#     return entities
 def detect_entities(text: str):
 
-    return []
+     entities = model.predict_entities(
+         text,
+         LABELS
+     )
+
+     return entities
+#def detect_entities(text: str):
+
+#    return []
