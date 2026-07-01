@@ -66,12 +66,13 @@ async def chat(
     )
 
     logger.info(
-        "DLP scan: score=%s action=%s patterns=%s categories=%s sensitive_terms=%s",
+        "DLP scan: score=%s action=%s patterns=%s categories=%s sensitive_terms=%s entities=%s",
         scan["score"],
         scan["action"],
         scan["patterns"],
         scan["categories"],
-        scan.get("sensitive_terms", [])
+        scan.get("sensitive_terms", []),
+        scan["entities"],
     )
     
     policy = apply_dlp_policy(
