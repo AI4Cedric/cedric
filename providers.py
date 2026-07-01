@@ -13,6 +13,10 @@ mistral_client = Mistral(
     api_key=os.getenv("MISTRAL_API_KEY")
 )
 
+print(
+    "MISTRAL KEY PRESENT:",
+    bool(os.getenv("MISTRAL_API_KEY"))
+)
 
 async def call_openai(prompt: str):
 
