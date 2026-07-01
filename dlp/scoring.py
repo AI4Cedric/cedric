@@ -7,7 +7,13 @@ def compute_score(
 
     score = 0
 
-    score += len(patterns) * 20
+    #score += len(patterns) * 20
+    for pattern in patterns:
+
+        if pattern=="api_key":
+            score += 80
+        else:
+            score += 20
 
     score += len(entities) * 5
 
